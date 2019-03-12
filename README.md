@@ -1,13 +1,13 @@
 # phpmyadmin
 php my admin finder in bash language by C1PH3R AND H4M4573R 
-PHPMYADMIN Scanner
+PHPMYADMINscanner
 Scan a website for its PHPMYADMIN panel with your own wordlist
 
-How to Install
+#How to Install
 copy the following commands
 
 git clone https://github.com/himeshvyas26/PHPMYADMIN
-cd PHPMYADMIN
+cd phpmyadmin
 chmod +x scanner
 ./scanner
 How to Use
