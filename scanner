@@ -1,0 +1,70 @@
+#!/data/data/com.termux/files/usr/bin/bash
+echo "#############################"
+echo "#   PHPMYADMINSCANNER ICH   #"
+echo "#     Coded By C1PH3R       #"
+echo "#  recoded By H4M4573R      #"
+echo "#############################"
+echo ""
+echo "Please select an option :"
+echo ""
+echo "1. Install the requirements"
+echo "2. Start the tool"
+read OPT
+if [ "$OPT" -eq 1 ]
+then
+pkg install ncurses-utils
+clear
+echo "Succesfully installed :) Now run the tool again and select option 2"
+elif [ "$OPT" -eq 2 ]
+then
+clear
+echo "#############################"
+echo "#   PHPMYADMINSCANNER ICH   #"
+echo "#     Coded By C1PH3R       #"
+echo "#  recoded By H4M4573R      #"
+echo "#############################"
+
+var=0
+var2=0
+var3=0
+
+RED='\e[0;31m'
+GREEN='\e[0;32m'
+BLUE='\e[4;36m'
+    echo -n "site to scan (including http:// and trailing '/'): "
+    read site
+    echo -n "phpmyadmin list file: "
+    read phpmyadmin
+    clear
+echo "#############################"
+echo "#   PHPMYADMINSCANNER ICH   #"
+echo "#     Coded By C1PH3R       #"
+echo "#  recoded By H4M4573R      #"
+echo "#############################"
+    echo ""
+    echo "Scanning..."
+exec<$phpmyadmin
+while read line
+do
+var3=`expr $var3 + 1`
+url=`(curl $site$line --head) 2>&1 | grep "HTTP" | cut -d " " -f 2`
+case $url in
+200 ) echo -e "$site$line $GREEN<--Success!!!" && tput sgr0 && var=`expr $var + 1`
+;;
+302 ) echo -e "$site$line $BLUE<--Possible (302)" && tput sgr0 && var2=`expr $var2 + 1`
+;;
+404 ) echo -en "$site$line $RED<-- Failed    \r" && tput sgr0
+;;
+*)
+;;
+esac
+done
+tput sgr0
+echo -e " "
+echo -e " "
+echo -e "$var phpmyadmin pages."
+echo -e "$var2 302 pages."
+echo -e "$var3 total pages tested."
+else 
+echo "Dude you are drunk !! select a valid option"
+fi
