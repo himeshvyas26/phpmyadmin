@@ -6,7 +6,7 @@ Scan a website for its PHPMYADMIN panel with your own wordlist
 #How to Install
 copy the following commands
 
-git clone https://github.com/himeshvyas26/PHPMYADMIN
+git clone https://github.com/indiancybertroops/PHPMYADMIN
 cd phpmyadmin
 chmod +x scanner
 ./scanner
